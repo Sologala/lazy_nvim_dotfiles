@@ -39,15 +39,24 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "svelte", "tailwindcss" }
+            local generic_servers = { "cmake", "clangd", 'pyright' }
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })
             end
+
+            lspconfig.cmake.setup {
+                init_options = {
+                    buildDirectory = "build"
+                },
+                root_dir = lspconfig.util.root_pattern("build", "out", ".git"),
+                single_file_support = true,
+                filetypes = { "cmake", "CMakeLists.txt" },
+            }
+
             lspconfig.pyright.setup {
-                on_attach = on_attach,
                 settings = {
                     pyright = { autoImportCompletion = true, },
                     python = {
@@ -62,7 +71,6 @@ return {
 
             -- Lua
             lspconfig.lua_ls.setup({
-                on_attach = on_attach,
                 settings = {
                     Lua = {
                         runtime = {
