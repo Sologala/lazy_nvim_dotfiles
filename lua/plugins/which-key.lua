@@ -87,6 +87,7 @@ return {
                 "Buffers",
             },
             ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+            ["E"] = { "<cmd>NvimTreeFindFile<cr>", "Reveal Curent Buffer in Ntree" },
             -- ["w"] = { "<cmd>w!<CR>", "Save" },
             -- ["q"] = { "<cmd>q!<CR>", "Quit" },
             -- ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
