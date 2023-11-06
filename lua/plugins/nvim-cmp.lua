@@ -1,6 +1,7 @@
 return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-buffer' },
     {
         'hrsh7th/nvim-cmp',
         config = function()
@@ -48,6 +49,7 @@ return {
                     { name = 'nvim_lsp' },
                     { name = 'vsnip' },
                     { name = "path" },
+                    { name = "buffer" },
                     -- { name = 'luasnip' }, -- For luasnip users.
                     -- { name = 'ultisnips' }, -- For ultisnips users.
                     -- { name = 'snippy' }, -- For snippy users.
