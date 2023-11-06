@@ -228,7 +228,8 @@ return {
                 },
                 f = { "<cmd>Format<cr>", "Format" },
                 i = { "<cmd>LspInfo<cr>", "Info" },
-                I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+                -- I = { "<cmd>LspInstallInfo<cr>", "Installer Info" }, // use lspinstall
+                I = { "<cmd>Mason<cr>", "Installer Info" },
                 j = {
                     "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
                     "Next Diagnostic",
