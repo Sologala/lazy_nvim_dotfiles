@@ -3,6 +3,7 @@
     "prefix": "ignore",
     "body": [
       "#-----------some ignore folder used with neovim, vscode, cland",
+      ".cland",
       "build",
       ".cache",
       ".vscode",
