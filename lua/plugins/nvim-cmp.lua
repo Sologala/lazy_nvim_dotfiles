@@ -12,14 +12,16 @@ return {
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load() -- load freindly-snippets
             require("luasnip.loaders.from_vscode").load({
-                paths = {                          -- load custom snippets
+                paths = {                                      -- load custom snippets
                     vim.fn.stdpath("config") .. "/my-snippets"
                 }
             })
         end,
     },
     { 'saadparwaiz1/cmp_luasnip' },
-
+    {
+        'octaltree/cmp-look',
+    },
     {
         'hrsh7th/nvim-cmp',
         config = function()
@@ -120,6 +122,15 @@ return {
                     { name = "buffer" },
                     { name = "treesitter" },
                     { name = 'luasnip' }, -- For luasnip users.
+                    {
+                        name = 'look',
+                        keyword_length = 2,
+                        option = {
+                            convert_case = true,
+                            loud = true
+                            --dict = '/usr/share/dict/words'
+                        }
+                    }
                     -- { name = 'ultisnips' }, -- For ultisnips users.
                     -- { name = 'snippy' }, -- For snippy users.
                 })
