@@ -138,3 +138,5 @@ keymap("n", "<space>F",
 keymap("v", "<space>F", "<cmd>lua require('utils.utils').FindCursorWord()<cr>", opts)
 keymap("n", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
 keymap("v", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
+-- keymap("n", "f", "<cmd>lua require('flash').jump()<cr>", opts)
+-- keymap("v", "f", "<cmd>lua require('flash').jump()<cr>", opts)
