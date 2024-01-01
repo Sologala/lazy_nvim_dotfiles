@@ -20,7 +20,7 @@ return {
     },
     { 'saadparwaiz1/cmp_luasnip' },
     {
-        'octaltree/cmp-look',
+        "Sologala/cmp-en-hint"
     },
     {
         'hrsh7th/nvim-cmp',
@@ -74,6 +74,7 @@ return {
                     treesitter = "(TS)",
                     emoji = "(Emoji)",
                     path = "(Path)",
+                    en_hint = "(Eng)",
                     calc = "(Calc)",
                     cmp_tabnine = "(Tabnine)",
                     vsnip = "(Snippet)",
@@ -123,7 +124,7 @@ return {
                     { name = "treesitter" },
                     { name = 'luasnip' }, -- For luasnip users.
                     {
-                        name = 'look',
+                        name = 'en_hint',
                         keyword_length = 2,
                         option = {
                             convert_case = true,
