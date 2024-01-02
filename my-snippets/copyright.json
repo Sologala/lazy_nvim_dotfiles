@@ -1,15 +1,14 @@
 {
-  "copyright": {
-    "prefix": "myheader",
-    "body": [
-      "/*",
-      "file: ${TM_FILENAME}",
-      "*date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-      "*author: dawson.wen",
-      "email: dawsonwen123@gmail.com",
-      "*/"
-    ],
-    "description": "Debug config header"
-  }
+    "copyright": {
+        "prefix": "myheader",
+        "body": [
+            "/*",
+            "file: ${TM_FILENAME}",
+            "*date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+            "*author: dawson.wen",
+            "email: dawsonwen123@gmail.com",
+            "*/"
+        ],
+        "description": "Debug config header"
+    }
 }
-

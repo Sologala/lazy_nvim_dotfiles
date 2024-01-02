@@ -1,19 +1,17 @@
 {
-  "ignore_default_folder": {
-    "prefix": "ignore",
-    "body": [
-      "#-----------some ignore folder used with neovim, vscode, cland",
-      ".clangd",
-      "build",
-      ".cache",
-      ".vscode",
-      ".local_history",
-      ".DS_Store",
-      "compile_commands.json",
-      "#-----------end-------------------------------------------------"
-    ],
-    "description": "Ignore defualt folder"
-  }
+    "ignore_default_folder": {
+        "prefix": "ignore",
+        "body": [
+            "#-----------some ignore folder used with neovim, vscode, cland",
+            ".clangd",
+            "build",
+            ".cache",
+            ".vscode",
+            ".local_history",
+            ".DS_Store",
+            "compile_commands.json",
+            "#-----------end-------------------------------------------------"
+        ],
+        "description": "Ignore defualt folder"
+    }
 }
-
-

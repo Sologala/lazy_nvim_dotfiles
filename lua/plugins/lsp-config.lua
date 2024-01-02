@@ -39,7 +39,7 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "cmake", "clangd", 'pyright' }
+            local generic_servers = { "cmake", "clangd", 'pyright', 'jsonls'}
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
@@ -47,6 +47,13 @@ return {
                 })
             end
 
+            lspconfig.jsonls.setup {
+                init_options = {
+                    provideFormatter = true
+                },
+                root_dir = lspconfig.util.root_pattern("build", "out", ".git"),
+                single_file_support = true,
+            }
             lspconfig.cmake.setup {
                 init_options = {
                     buildDirectory = "build"
