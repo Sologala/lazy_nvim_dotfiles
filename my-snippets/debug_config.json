@@ -1,6 +1,6 @@
 {
     "debug-config-header": {
-        "prefix": "dheader",
+        "prefix": "snp-dheader",
         "body": [
             "{",
             "\"version\": \"0.2.0\",",
@@ -12,7 +12,7 @@
         "description": "Debug config header"
     },
     "debug-config-launch": {
-        "prefix": "dlaunch",
+        "prefix": "snp-dlaunch",
         "body": [
             "{",
             "\"name\": \"launch\",",

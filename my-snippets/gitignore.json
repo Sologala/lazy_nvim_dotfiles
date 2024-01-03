@@ -1,6 +1,6 @@
 {
     "ignore_default_folder": {
-        "prefix": "ignore",
+        "prefix": "raw-gitignore",
         "body": [
             "#-----------some ignore folder used with neovim, vscode, cland",
             ".clangd",

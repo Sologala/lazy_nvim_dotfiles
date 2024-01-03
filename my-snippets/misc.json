@@ -1,0 +1,9 @@
+{
+    "rawstring": {
+        "prefix": "snp-rawstring",
+        "body": [
+            "R\"*()*\""
+        ],
+        "description": "Input raw string"
+    }
+}

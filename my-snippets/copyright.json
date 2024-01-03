@@ -1,6 +1,6 @@
 {
     "copyright": {
-        "prefix": "myheader",
+        "prefix": "snp-myheader",
         "body": [
             "/*",
             "file: ${TM_FILENAME}",

@@ -16,6 +16,10 @@
             {
                 "language": "all",
                 "path": "./copyright.json"
+            },
+            {
+                "language": "all",
+                "path": "./misc.json"
             }
         ]
     }
