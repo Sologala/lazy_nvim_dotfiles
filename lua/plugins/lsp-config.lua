@@ -39,14 +39,29 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "cmake", "clangd", 'pyright', 'jsonls'}
+            local generic_servers = {"clangd", 'pyright', 'jsonls'}
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })
             end
-
+            lspconfig.neocmake.setup {
+            {
+                cmd = vim.lsp.rpc.connect('127.0.0.1','9257'),
+                filetypes = { "cmake" },
+                root_dir = function(fname)
+                    return nvim_lsp.util.find_git_ancestor(fname)
+                end,
+                single_file_support = true,-- suggested
+                on_attach = on_attach, -- on_attach is the on_attach function you defined
+                init_options = {
+                    format = {
+                        enable = true
+                    }
+                }
+            }
+            }
             lspconfig.jsonls.setup {
                 init_options = {
                     provideFormatter = true
@@ -54,14 +69,14 @@ return {
                 root_dir = lspconfig.util.root_pattern("build", "out", ".git"),
                 single_file_support = true,
             }
-            lspconfig.cmake.setup {
-                init_options = {
-                    buildDirectory = "build"
-                },
-                root_dir = lspconfig.util.root_pattern("build", "out", ".git"),
-                single_file_support = true,
-                filetypes = { "cmake", "CMakeLists.txt" },
-            }
+            -- lspconfig.cmake.setup {
+            --     init_options = {
+            --         buildDirectory = "build"
+            --     },
+            --     root_dir = lspconfig.util.root_pattern("build", "out", ".git"),
+            --     single_file_support = true,
+            --     filetypes = { "cmake", "CMakeLists.txt" },
+            -- }
 
             lspconfig.pyright.setup {
                 settings = {
