@@ -114,7 +114,7 @@ return {
                     on_attach = on_attach,      -- on_attach is the on_attach function you defined
                     init_options = {
                         format = {
-                            enable = true
+                            enable = false
                         }
                     }
                 }
