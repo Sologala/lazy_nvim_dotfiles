@@ -3,12 +3,12 @@ return {
     tag = '0.1.4',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        -- "nvim-telescope/telescope-live-grep-args.nvim"
+        "nvim-telescope/telescope-live-grep-args.nvim"
     },
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
-
+        local lga_actions = require("telescope-live-grep-args.actions")
         telescope.setup {
             defaults = {
                 file_ignore_patterns = {
@@ -98,40 +98,31 @@ return {
                     },
                 },
             },
-            -- pickers = {
-            --     find_files = {
-            --         theme = "dropdown",
-            --     },
-            -- },
-            extensions = {
-                -- Your extension configuration goes here:
-                -- extension_name = {
-                --   extension_config_key = value,
-                -- }
-
-                -- fzf syntax
-                -- Token	Match type	Description
-                -- sbtrkt	fuzzy-match	Items that match sbtrkt
-                -- 'wild'	exact-match (quoted)	Items that include wild
-                -- ^music	prefix-exact-match	Items that start with music
-                -- .mp3$	suffix-exact-match	Items that end with .mp3
-                -- !fire	inverse-exact-match	Items that do not include fire
-                -- !^music	inverse-prefix-exact-match	Items that do not start with music
-                -- !.mp3$	inverse-suffix-exact-match	Items that do not end with .mp3
-                -- fzf = {
-                --     fuzzy = true,                   -- false will only do exact matching
-                --     override_generic_sorter = true, -- override the generic sorter
-                --     override_file_sorter = true,    -- override the file sorter
-                --     case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-                --     -- the default case_mode is "smart_case"
-                -- },
-                ["ui-select"] = {
-                    require("telescope.themes").get_dropdown {
-                        -- even more opts
-                    }
+            pickers = {
+                find_files = {
+                    theme = "dropdown",
+                    previewer = true,
+                    -- find_command = { "find", "-type", "f" },
+                    find_command = { "fd", "-H", "-I" }, -- "-H" search hidden files, "-I" do not respect to gitignore
                 },
             },
+            extensions = {
+                live_grep_args = {
+                    auto_quoting = true, -- enable/disable auto-quoting
+                    -- define mappings, e.g.
+                    mappings = { -- extend mappings
+                        i = {
+                            ["<C-k>"] = lga_actions.quote_prompt(),
+                            ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                        },
+                    },
+                    -- ... also accepts theme settings, for example:
+                    theme = "ivy", -- use dropdown theme
+                    -- theme = { }, -- use own theme spec
+                    -- layout_config = { mirror=true }, -- mirror preview pane
+                }
+            },
         }
-        -- telescope.load_extension("fzf")
+        telescope.load_extension("live_grep_args")
     end
 }

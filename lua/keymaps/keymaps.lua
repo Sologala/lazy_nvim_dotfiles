@@ -19,9 +19,6 @@ keymap("", ";", "<Nop>", opts)
 -- nvim-tree
 -- keymap("n", "<space>e", ":NvimTreeToggle<cr>", opts)
 
-
-
-
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -65,13 +62,6 @@ keymap("n", "ZZ", ":lua require('utils.utils').SaveAndExit()<cr>", opts)
 -- cancel q
 keymap("n", "q", "<Nop>", opts)
 
--- center cursor
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
--- keymap("n", "J", "mzJ`z", opts)
--- keymap("n", "j", "jzz", opts)
--- keymap("n", "k", "kzz", opts)
-
 
 -- Resize with arrows
 keymap("n", "<A-Up>", ":resize -2<CR>", opts)
@@ -114,16 +104,9 @@ keymap("v", "p", '"_dP', opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
-
--- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
--- keymap("n", "<Space>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
--- keymap("n", "<Space>f", "<cmd>lua require('telescope').extensions.frecency.frecency(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
--- keymap("n", "<Space>F", "<cmd>Telescope live_grep<cr>", opts)
-
 -- bookmarks
 -- keymap("n", "ma", "<cmd>Telescope vim_bookmarks current_file<cr>", opts)
 -- keymap("n", "mA", "<cmd>Telescope vim_bookmarks all<cr>", opts)
-
 
 -- file finder
 keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
@@ -132,13 +115,9 @@ keymap("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>", opts)
 -- find all lsp references
 keymap("n", "<leader>u", "<cmd>Trouble lsp_references<cr>", opts)
 
--- keymap("n", "<space>F",
---     "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy())<cr>",
---     opts)
-keymap("n", "<space>F", "<cmd>lua require('telescope.builtin').live_grep(require('telescope.themes').get_ivy())<cr>",
-    opts)
+keymap("n", "<space>F", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
+keymap("v", "<space>F", "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>", opts)
 
-keymap("v", "<space>F", "<cmd>lua require('utils.utils').FindCursorWord()<cr>", opts)
 keymap("n", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
 keymap("v", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
 -- keymap("n", "f", "<cmd>lua require('flash').jump()<cr>", opts)
