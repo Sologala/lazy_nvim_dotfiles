@@ -37,9 +37,4 @@ M.GetWord = function()
     local word = vim.api.nvim_call_function("expand", { "<cword>" })
     return word
 end
-M.FindCursorWord = function()
-    local ts = require('telescope.builtin')
---    vim.notify(vim.api.nvim_call_function("expand", { "<cword>" }))
-    ts.live_grep({default_text=vim.api.nvim_call_function("expand", { "<cword>" })})
-end
 return M
