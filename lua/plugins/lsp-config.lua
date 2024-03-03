@@ -45,7 +45,8 @@ return {
                     -- return 'right_align' to display hint right aligned in the current line
                     hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
                     handler_opts = {
-                        border = "rounded"                        -- double, rounded, single, shadow, none, or a table of borders
+                        border =
+                        "rounded"                                 -- double, rounded, single, shadow, none, or a table of borders
                     },
 
                     always_trigger = false,                   -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
@@ -96,7 +97,7 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver' }
+            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls' }
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
@@ -124,6 +125,12 @@ return {
                     provideFormatter = true
                 },
                 root_dir = lspconfig.util.root_pattern("build", "out", ".git"),
+                single_file_support = true,
+            }
+            lspconfig.gopls.setup {
+                cmd = { "gopls" },
+                filetypes = { "go", "gomod", "gowork", "gotmpl" },
+                root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
                 single_file_support = true,
             }
             lspconfig.tsserver.setup {
