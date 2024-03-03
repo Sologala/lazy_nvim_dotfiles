@@ -46,7 +46,7 @@ return {
                     hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
                     handler_opts = {
                         border =
-                        "rounded"                                 -- double, rounded, single, shadow, none, or a table of borders
+                        "rounded" -- double, rounded, single, shadow, none, or a table of borders
                     },
 
                     always_trigger = false,                   -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
@@ -97,7 +97,7 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls' }
+            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls', 'lemminx' }
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
@@ -120,6 +120,7 @@ return {
             --         }
             --     }
             -- }
+            lspconfig.lemminx.setup {}
             lspconfig.jsonls.setup {
                 init_options = {
                     provideFormatter = true
