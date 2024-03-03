@@ -12,12 +12,17 @@ return {
         telescope.setup {
             defaults = {
                 file_ignore_patterns = {
-                    "^./build/",
-                    "^./out/",
-                    "^./.cache/",
-                    "^./.clangd/",
-                    "^./.git/",
-                    "^./3rdparty/"
+                    "^build/",
+                    "^out/",
+                    "^devel/",
+                    "^install/",
+                    "^logs/",
+                    "^.cache/",
+                    "^.clangd/",
+                    "^.catkin_tools/",
+                    "^.cache/",
+                    "^.git/",
+                    "^3rdparty/"
                 },
                 prompt_prefix = " ",
                 selection_caret = " ",
