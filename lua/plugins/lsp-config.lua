@@ -5,6 +5,9 @@ return {
             -- Code Formatting (from null-ls)
             local LspFormattingAugroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+           --  vim映射后缀为launch的文件类型为xml
+            vim.filetype.add({ extension = { launch = "xml" } })
+
             -- On LSP Server Attach
             local on_attach = function(client, bufnr)
                 local lsp_signature_cfg = {
@@ -120,7 +123,12 @@ return {
             --         }
             --     }
             -- }
-            lspconfig.lemminx.setup {}
+            lspconfig.lemminx.setup {
+                cmd = { "lemminx" },
+                single_file_support = true,
+                filetypes = { "launch" },
+                -- root_dir = lspconfig.util.root_pattern("build", "out", ".git"),
+            }
             lspconfig.jsonls.setup {
                 init_options = {
                     provideFormatter = true
