@@ -103,7 +103,7 @@ return {
                     required_width = 110, -- min width of window required to show this column
                 },
                 symlink_target = {
-                    enabled = false,
+                    enabled = true,
                 },
             },
             -- A list of functions, each representing a global custom command
@@ -192,6 +192,7 @@ return {
                         config = {
                             show_path = "absolute" -- "none", "relative", "absolute"
                         }
+
                     },
                     ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
                     ["q"] = "close_window",
@@ -264,9 +265,7 @@ return {
                     },
                     fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
                         ["<down>"] = "move_cursor_down",
-                        ["<C-n>"] = "move_cursor_down",
                         ["<up>"] = "move_cursor_up",
-                        ["<C-p>"] = "move_cursor_up",
                     },
                 },
 
@@ -299,13 +298,13 @@ return {
                 window = {
                     position = "float",
                     mappings = {
-                        ["A"]  = "git_add_all",
-                        ["gu"] = "git_unstage_file",
-                        ["ga"] = "git_add_file",
-                        ["gr"] = "git_revert_file",
-                        ["gc"] = "git_commit",
-                        ["gp"] = "git_push",
-                        ["gg"] = "git_commit_and_push",
+                        -- ["A"]  = "git_add_all",
+                        -- ["gu"] = "git_unstage_file",
+                        -- ["ga"] = "git_add_file",
+                        -- ["gr"] = "git_revert_file",
+                        -- ["gc"] = "git_commit",
+                        -- ["gp"] = "git_push",
+                        -- ["gg"] = "git_commit_and_push",
                         ["o"]  = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
                         ["oc"] = { "order_by_created", nowait = false },
                         ["od"] = { "order_by_diagnostics", nowait = false },
@@ -318,6 +317,6 @@ return {
             }
         })
 
-        vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+        -- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end,
 }
