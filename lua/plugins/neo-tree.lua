@@ -186,14 +186,14 @@ return {
                     ["y"] = "copy_to_clipboard",
                     ["x"] = "cut_to_clipboard",
                     ["p"] = "paste_from_clipboard",
-                    ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
-                    ["gy"] = {
-                        "copy",
-                        config = {
-                            show_path = "absolute" -- "none", "relative", "absolute"
-                        }
-
-                    },
+                    -- ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
+                    -- ["gy"] = {
+                    --     "copy",
+                    --     config = {
+                    --         show_path = "absolute" -- "none", "relative", "absolute"
+                    --     }
+                    --
+                    -- },
                     ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
                     ["q"] = "close_window",
                     ["R"] = "refresh",
