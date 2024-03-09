@@ -201,6 +201,11 @@ return {
                     ["<"] = "prev_source",
                     [">"] = "next_source",
                     ["i"] = "show_file_details",
+                    ["S"] = function(state)
+                        local node = state.tree:get_node()
+                        local abs_filepath = node:get_id()
+                        require('utils.system_open').fn(abs_filepath);
+                    end
                 }
             },
             nesting_rules = {},
