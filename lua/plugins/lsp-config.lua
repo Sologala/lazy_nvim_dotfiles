@@ -253,6 +253,7 @@ return {
             local ft = require('guard.filetype')
             local guard = require("guard")
             ft('python'):fmt('autopep8')
+            ft('lua'):fmt("lsp")
             -- :append('format-tool-2')
             -- :env(env_table)
             -- :lint('lint-tool-1')
