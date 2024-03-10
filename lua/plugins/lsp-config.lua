@@ -5,7 +5,7 @@ return {
             -- Code Formatting (from null-ls)
             local LspFormattingAugroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-           --  vim映射后缀为launch的文件类型为xml
+            --  vim映射后缀为launch的文件类型为xml
             vim.filetype.add({ extension = { launch = "xml" } })
 
             -- On LSP Server Attach
@@ -242,4 +242,26 @@ return {
             require("mason-lspconfig").setup()
         end,
     },
+
+    {
+        "nvimdev/guard.nvim",
+        -- Builtin configuration, optional
+        dependencies = {
+            "nvimdev/guard-collection",
+        },
+        config = function()
+            local ft = require('guard.filetype')
+            local guard = require("guard")
+            ft('python'):fmt('autopep8')
+            -- :append('format-tool-2')
+            -- :env(env_table)
+            -- :lint('lint-tool-1')
+            -- :extra(extra_args)
+
+            guard.setup({
+                fmt_on_save = false,
+                lsp_as_default_formatter = true
+            })
+        end
+    }
 }
