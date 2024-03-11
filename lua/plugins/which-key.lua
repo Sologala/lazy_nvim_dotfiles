@@ -172,7 +172,8 @@ return {
             t = {
                 c = { "<cmd> lua require('telescope.builtin').command_history()<cr>", "Command History" },
                 f = { "<cmd> lua require('telescope.builtin').oldfiles()<cr>", "OpenedFile History" },
-                s = { "<cmd> lua require('telescope.builtin').search_history()<cr>", "Search History" }
+                s = { "<cmd> lua require('telescope.builtin').search_history()<cr>", "Search History" },
+                t = { "<cmd> TodoTelescope<cr>", "TODO" }
             },
 
             -- g = {
