@@ -149,7 +149,7 @@ return {
                         if i > 0 then
                             local result = results[i]
                             if not result then return print('Invalid choice: ' .. i) end
-                            vim.fn.setreg('"', result)
+                            vim.fn.setreg('+', result)
                             vim.notify('Copied: ' .. result)
                         end
                     end,
