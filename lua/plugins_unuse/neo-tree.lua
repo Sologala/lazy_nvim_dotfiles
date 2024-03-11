@@ -20,11 +20,14 @@ return {
             { text = "󰌵", texthl = "DiagnosticSignHint" })
 
         require("neo-tree").setup({
+            add_blank_line_at_top = true,
             close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
             popup_border_style = "rounded",
             enable_git_status = true,
             enable_diagnostics = false,
+            -- hide_root_node = true,
             open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
+            open_files_in_last_window = true,
             sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
             sort_function = nil,                                               -- use a custom function for sorting files and directories in the tree
             -- sort_function = function (a,b)
@@ -236,7 +239,7 @@ return {
                 follow_current_file = {
                     enabled = false,                    -- This will find and focus the file in the active buffer every time
                     --               -- the current file is changed while the tree is open.
-                    leave_dirs_open = true,            -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+                    leave_dirs_open = true,             -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
                 },
                 group_empty_dirs = false,               -- when true, empty folders will be grouped together
                 hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
