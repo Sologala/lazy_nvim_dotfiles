@@ -43,7 +43,8 @@ keymap("n", "<C-W>m", ":WinShift<cr>", opts)
 -- formatting
 -- keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
 keymap("n", "<leader>F", "<cmd>GuardFmt<cr>", opts)
-keymap('v', '<leader>f', "<ESC><cmd>lua vim.lsp.buf.format()<CR>", opts)
+-- keymap('v', '<leader>f', "<ESC><cmd>lua vim.lsp.buf.format()<CR>", opts)
+keymap('v', '<leader>f', "<cmd>GuardFmt<CR>", opts)
 -- keymap('v', '<leader>f', "<ESC><cmd>lua vim.lsp.buf.formatexpr()<CR>", opts)
 
 -- save buffer

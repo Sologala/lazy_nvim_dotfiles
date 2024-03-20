@@ -100,7 +100,7 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls', 'lemminx' }
+            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls', 'lemminx', "bashls" }
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
@@ -123,6 +123,7 @@ return {
             --         }
             --     }
             -- }
+            lspconfig.bashls.setup {}
             lspconfig.lemminx.setup {
                 cmd = { "lemminx" },
                 single_file_support = true,
@@ -245,6 +246,7 @@ return {
 
     {
         "nvimdev/guard.nvim",
+        commit = "81a0995f07cc370fbf15d6d03abc4b1f8651d23f",
         -- Builtin configuration, optional
         dependencies = {
             "nvimdev/guard-collection",
@@ -254,6 +256,11 @@ return {
             local guard = require("guard")
             ft('python'):fmt('autopep8')
             ft('lua'):fmt("lsp")
+            ft('cmake'):fmt({
+                cmd = "cmake-format",
+                args = {"-" },
+                stdio = true,
+            })
             -- :append('format-tool-2')
             -- :env(env_table)
             -- :lint('lint-tool-1')
