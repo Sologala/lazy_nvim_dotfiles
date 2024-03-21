@@ -198,7 +198,7 @@ return {
                 p = { "<cmd>DiffviewOpen<CR>", "Diff Project" },
                 n = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
                 N = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-                l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+                l = { "<cmd>lua require 'gitsigns'.blame_line({full = true})<cr>", "Blame" },
                 r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
                 R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
                 s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
