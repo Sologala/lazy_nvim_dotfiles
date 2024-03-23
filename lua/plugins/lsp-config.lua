@@ -258,7 +258,7 @@ return {
             ft('lua'):fmt("lsp")
             ft('cmake'):fmt({
                 cmd = "cmake-format",
-                args = {"-" },
+                args = { "-" },
                 stdio = true,
             })
             -- :append('format-tool-2')
