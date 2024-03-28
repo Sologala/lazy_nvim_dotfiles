@@ -25,6 +25,7 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<silent>*", "syiw<Esc>: let @/ = @s<CR>", opts)
 
 -- keymap("n", "<C-h>", "<cmd>lua require('tmux').move_left()<cr>", opts)
 -- keymap("n", "<C-j>", "<cmd>lua require('tmux').move_bottom()<cr>", opts)
@@ -42,7 +43,7 @@ keymap("n", "<C-W>m", ":WinShift<cr>", opts)
 
 -- formatting
 -- keymap("n", "<leader>F", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
-keymap("n", "<leader>F", "<cmd>GuardFmt<cr>", opts)
+-- keymap("n", "<leader>F", "<cmd>GuardFmt<cr>", opts)
 -- keymap('v', '<leader>f', "<ESC><cmd>lua vim.lsp.buf.format()<CR>", opts)
 keymap('v', '<leader>f', "<cmd>GuardFmt<CR>", opts)
 -- keymap('v', '<leader>f', "<ESC><cmd>lua vim.lsp.buf.formatexpr()<CR>", opts)
