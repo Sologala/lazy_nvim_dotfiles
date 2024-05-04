@@ -261,11 +261,25 @@ return {
                 args = { "-" },
                 stdio = true,
             })
-            -- :append('format-tool-2')
-            -- :env(env_table)
-            -- :lint('lint-tool-1')
-            -- :extra(extra_args)
-
+            ft('c,cpp'):fmt({
+                cmd = 'clang-format',
+                stdin = true,
+                args = {
+                    [[--style={BasedOnStyle: Microsoft,
+                    AlignConsecutiveAssignments: true,
+                    AlignConsecutiveDeclarations: true,
+                    AlignEscapedNewlines: Right,
+                    AlignTrailingComments: true,
+                    AllowShortBlocksOnASingleLine: false,
+                    AlwaysBreakBeforeMultilineStrings: false,
+                    AlwaysBreakTemplateDeclarations: Yes,
+                    IndentWidth: 4,
+                    TabWidth: 4,
+                    UseTab: Never,
+                    PointerAlignment: Right,
+                    Standard: Cpp11}]]
+                }
+            })
             guard.setup({
                 fmt_on_save = false,
                 lsp_as_default_formatter = true
