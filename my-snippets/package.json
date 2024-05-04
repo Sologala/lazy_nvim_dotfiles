@@ -20,6 +20,10 @@
             {
                 "language": "all",
                 "path": "./misc.json"
+            },
+            {
+                "language": "yaml",
+                "path": "./clang-format.json"
             }
         ]
     }

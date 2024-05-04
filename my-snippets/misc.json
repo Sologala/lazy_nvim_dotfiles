@@ -5,5 +5,42 @@
             "R\"*()*\""
         ],
         "description": "Input raw string"
+    },
+    "snp-singleton": {
+        "prefix": "snp-singleton",
+        "body": [
+            "${0:className}(className const &) = delete;                                                                             ",
+            "${0:className} &operator=(className const &) = delete;                                                                  ",
+            "static ${0:className} &instance()                                                                                       ",
+            "{                                                                                                                  ",
+            "    static ${0:className} instance;                                                                                     ",
+            "    return instance;                                                                                               ",
+            "}                                                                                                                  ",
+            "private:                                                                                                           ",
+            "${0:className}() = default;                                                                                             ",
+            "~${0:className}() = default;"
+        ],
+        "description": "Input raw string"
+    },
+    "snp-sharedptr": {
+        "prefix": "snp-sharedptr",
+        "body": [
+            "using Sptr = std::shared_ptr<${0:className}>;",
+            "using Uptr = std::unique_ptr<${0:className}>;"
+        ],
+        "description": "Input raw string"
+    },
+    "classb": {
+        "prefix": "classb",
+        "body": [
+            "class ${1:MyClass} {",
+            "public:",
+            "\t$1() = default;",
+            "\t~$1() = default;",
+            "",
+            "private:",
+            "};"
+        ],
+        "description": "Code snippet for class with inline constructor/destructor"
     }
 }
