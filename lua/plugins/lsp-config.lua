@@ -243,47 +243,84 @@ return {
             require("mason-lspconfig").setup()
         end,
     },
-
     {
-        "nvimdev/guard.nvim",
-        commit = "81a0995f07cc370fbf15d6d03abc4b1f8651d23f",
-        -- Builtin configuration, optional
-        dependencies = {
-            "nvimdev/guard-collection",
+        'stevearc/conform.nvim',
+        opts = {
+            notify_on_error = true,
+            formatters_by_ft = {
+                cpp = { "clang-format" },
+                cmake = { "cmake-format" },
+            },
+            formatters = {
+                ["clang-format"] = {
+                    -- prepend_args = { "-style", "Microsoft" },
+                    prepend_args = { "-style", "{BasedOnStyle: Microsoft, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true, AlignEscapedNewlines: Right, AlignTrailingComments: true, AllowShortBlocksOnASingleLine: false, AlwaysBreakBeforeMultilineStrings: false, AlwaysBreakTemplateDeclarations: Yes, IndentWidth: 4, TabWidth: 4, UseTab: Never, PointerAlignment: Right, Standard: Cpp11}" },
+                },
+            }
         },
-        config = function()
-            local ft = require('guard.filetype')
-            local guard = require("guard")
-            ft('python'):fmt('autopep8')
-            ft('lua'):fmt("lsp")
-            ft('cmake'):fmt({
-                cmd = "cmake-format",
-                args = { "-" },
-                stdio = true,
-            })
-            ft('c,cpp'):fmt({
-                cmd = 'clang-format',
-                stdin = true,
-                args = {
-                    [[--style={BasedOnStyle: Microsoft,
-                    AlignConsecutiveAssignments: true,
-                    AlignConsecutiveDeclarations: true,
-                    AlignEscapedNewlines: Right,
-                    AlignTrailingComments: true,
-                    AllowShortBlocksOnASingleLine: false,
-                    AlwaysBreakBeforeMultilineStrings: false,
-                    AlwaysBreakTemplateDeclarations: Yes,
-                    IndentWidth: 4,
-                    TabWidth: 4,
-                    UseTab: Never,
-                    PointerAlignment: Right,
-                    Standard: Cpp11}]]
-                }
-            })
-            guard.setup({
-                fmt_on_save = false,
-                lsp_as_default_formatter = true
-            })
-        end
+        keys = {
+            {
+                '<leader>f',
+                function()
+                    require('conform').format { async = true, lsp_fallback = true }
+                end,
+                mode = 'v',
+                desc = '[F]ormat buffer',
+            },
+            {
+                '<leader>F',
+                function()
+                    require('conform').format { async = true, lsp_fallback = true }
+                end,
+                mode = 'n',
+                desc = '[F]ormat buffer',
+            },
+
+
+        },
     }
+
+    -- {
+    --     "nvimdev/guard.nvim",
+    --     -- commit = "81a0995f07cc370fbf15d6d03abc4b1f8651d23f",
+    --     -- Builtin configuration, optional
+    --     dependencies = {
+    --         "nvimdev/guard-collection",
+    --     },
+    --     config = function()
+    --         local ft = require('guard.filetype')
+    --         local guard = require("guard")
+    --         ft('python'):fmt('autopep8')
+    --         ft('lua'):fmt("lsp")
+    --         ft('cmake'):fmt({
+    --             cmd = "cmake-format",
+    --             args = { "-" },
+    --             stdio = true,
+    --         })
+    --         ft('c,cpp'):fmt({
+    --             cmd = 'clang-format',
+    --             stdin = true,
+    --             args = {
+    --                 [[--style={BasedOnStyle: Microsoft,
+    --                 AlignConsecutiveAssignments: true,
+    --                 AlignConsecutiveDeclarations: true,
+    --                 AlignEscapedNewlines: Right,
+    --                 AlignTrailingComments: true,
+    --                 AllowShortBlocksOnASingleLine: false,
+    --                 AlwaysBreakBeforeMultilineStrings: false,
+    --                 AlwaysBreakTemplateDeclarations: Yes,
+    --                 IndentWidth: 4,
+    --                 TabWidth: 4,
+    --                 UseTab: Never,
+    --                 PointerAlignment: Right,
+    --                 Standard: Cpp11}]]
+    --             }
+    --         })
+    --         guard.setup({
+    --             fmt_on_save = false,
+    --             lsp_as_default_formatter = true
+    --         })
+    --     end
+    -- }
+
 }
