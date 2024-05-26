@@ -201,7 +201,6 @@ return {
             })
             -- cpp
             lspconfig.clangd.setup({
-                on_attach = on_attach,
                 root_dir = lspconfig.util.root_pattern("build", "out"),
                 cmd = {
                     "clangd",             -- NOTE: 只支持clangd 13.0.0 及其以下版本，新版本会有问题
@@ -248,8 +247,8 @@ return {
         opts = {
             notify_on_error = true,
             formatters_by_ft = {
+                lua = { 'stylua' },
                 cpp = { "clang-format" },
-                cmake = { "cmake-format" },
             },
             formatters = {
                 ["clang-format"] = {
