@@ -257,7 +257,7 @@ return {
             formatters = {
                 ["clang-format"] = {
                     -- prepend_args = { "-style", "Microsoft" },
-                    prepend_args = { "-style", "{BasedOnStyle: Microsoft, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true, AlignEscapedNewlines: Right, AlignTrailingComments: true, AllowShortBlocksOnASingleLine: false, AlwaysBreakBeforeMultilineStrings: false, AlwaysBreakTemplateDeclarations: Yes, IndentWidth: 4, TabWidth: 4, UseTab: Never, PointerAlignment: Right, Standard: Cpp11}" },
+                    -- prepend_args = { "-style", "{BasedOnStyle: Microsoft, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true, AlignEscapedNewlines: Right, AlignTrailingComments: true, AllowShortBlocksOnASingleLine: false, AlwaysBreakBeforeMultilineStrings: false, AlwaysBreakTemplateDeclarations: Yes, IndentWidth: 4, TabWidth: 4, UseTab: Never, PointerAlignment: Right, Standard: Cpp11}" },
                 },
             }
         },
@@ -282,7 +282,6 @@ return {
 
         },
     }
-
     -- {
     --     "nvimdev/guard.nvim",
     --     -- commit = "81a0995f07cc370fbf15d6d03abc4b1f8651d23f",

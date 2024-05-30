@@ -6,6 +6,7 @@ return {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
         --
+        position = "bottom", -- position of the list can be: bottom, top, left, right
         auto_close = true,
         action_keys = {
             jump = { "<tab>", "<2-leftmouse>" }, -- jump to the diagnostic or open / close folds

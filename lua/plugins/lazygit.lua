@@ -15,12 +15,12 @@ return {
             "LazyGitFilterCurrentFile",
         },
         -- order to load the plugin when the command is run for the first time
-        keys = {
-            { "<space>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-        },
+        -- keys = {
+        --     { "<space>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+        -- },
         config = function()
             require("telescope").load_extension("lazygit")
-            vim.cmd("autocmd! BufEnter *:lua require('lazygit.utils').project_root_dir()")
+            -- vim.cmd("autocmd! BufEnter *:lua require('lazygit.utils').project_root_dir()")
         end,
     },
     {
