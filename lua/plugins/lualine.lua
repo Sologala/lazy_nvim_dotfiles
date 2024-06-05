@@ -21,10 +21,6 @@ return {
         },
         sections = {
             lualine_a = {
-                'mode'
-            },
-            lualine_b = { 'branch', 'diff', 'diagnostics' },
-            lualine_c = {
                 {
                     function()
                         local cwd = vim.fn.getcwd()
@@ -46,8 +42,12 @@ return {
                     end,
                     icon = '📁', -- 可选：提供一个图标表示工作目录
                     padding = 0,
-                    color = {bg = '#006400'}
+                    -- color = { bg = '#006400' }
                 },
+                'mode'
+            },
+            lualine_b = { 'branch', 'diff', 'diagnostics' },
+            lualine_c = {
                 { 'filename', color = { bg = 'green' } }
             },
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
