@@ -3,7 +3,7 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             -- Code Formatting (from null-ls)
-            local LspFormattingAugroup = vim.api.nvim_create_augroup("LspFormatting", {})
+            -- local LspFormattingAugroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
             --  vim映射后缀为launch的文件类型为xml
             vim.filetype.add({ extension = { launch = "xml" } })
@@ -88,9 +88,9 @@ return {
                 -- vim.keymap.set("n", "<A-j>", vim.diagnostic.goto_next)
                 -- vim.keymap.set("n", "<A-k>", vim.diagnostic.goto_prev)
 
-                if client.supports_method("textDocument/formatting") then
-                    vim.api.nvim_clear_autocmds({ group = LspFormattingAugroup, buffer = bufnr })
-                end
+                -- if client.supports_method("textDocument/formatting") then
+                --     vim.api.nvim_clear_autocmds({ group = LspFormattingAugroup, buffer = bufnr })
+                -- end
             end
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -199,13 +199,17 @@ return {
                     },
                 },
             })
+            local nvim_cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
             -- cpp
             lspconfig.clangd.setup({
+                on_attach = on_attach,
+                capabilities = nvim_cmp_capabilities,
                 root_dir = lspconfig.util.root_pattern("build", "out"),
                 cmd = {
                     "clangd",             -- NOTE: 只支持clangd 13.0.0 及其以下版本，新版本会有问题
                     "--background-index", -- 后台建立索引，并持久化到disk
                     "--clang-tidy",       -- 开启clang-tidy
+                    -- "--query-driver=/usr/bin/clang++-18",
                     -- 指定clang-tidy的检查参数， 摘抄自cmu15445. 全部参数可参考 https://clang.llvm.org/extra/clang-tidy/checks
                     "--completion-style=detailed",
                     "--cross-file-rename=true",

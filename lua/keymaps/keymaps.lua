@@ -127,3 +127,18 @@ keymap("n", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
 keymap("v", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
 -- keymap("n", "f", "<cmd>lua require('flash').jump()<cr>", opts)
 -- keymap("v", "f", "<cmd>lua require('flash').jump()<cr>", opts)
+
+local function open_vscode_if_present()
+    local cwd = vim.fn.getcwd()
+    local vscode_path = cwd .. "/.vscode"
+
+    if vim.fn.isdirectory(vscode_path) == 1 then
+        -- 執行 `code` 命令
+        os.execute("code .")
+    else
+        -- 顯示消息
+        print(".vscode directory not found.")
+    end
+end
+
+vim.api.nvim_create_user_command("Vscode", open_vscode_if_present, {})
