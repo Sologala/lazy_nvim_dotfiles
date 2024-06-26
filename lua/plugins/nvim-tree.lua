@@ -104,7 +104,15 @@ return {
             vim.keymap.set('n', 'l', api.node.open.edit, opts('Help'))
             vim.keymap.set('n', 'D', api.tree.toggle_gitignore_filter, opts('Toggle git ignore file'))
             vim.keymap.set('n', '[g', api.node.navigate.git.prev, opts('Prev Git'))
-            vim.keymap.set('n', ']g', api.node.navigate.git.next, opts('Next Git'))
+            vim.keymap.set('n', 'N', function()
+                local node = api.tree.get_node_under_cursor()
+                print(node.absolute_path)
+                if node then
+                    print("nautilus "..node.absolute_path)
+                    vim.fn.jobstart("nautilus "..node.absolute_path, { detach = true })
+                end
+            end, opts('Nautilus'))
+            -- vim.keymap.set('n', 'O, api.node.navigate.git.next, opts('Next Git'))
             -- custom mappings
             --vim.keymap.set('n', 'h', api.tree.close_node, opts('Close'))
             --vim.keymap.set('n', 'l', api.node.navigate.parent_close, opts('Close Parent'))
