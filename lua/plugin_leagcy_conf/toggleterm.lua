@@ -1,5 +1,18 @@
 local toggleterm = require("toggleterm")
 
+function OS()
+    return package.config:sub(1,1) == "\\" and "win" or "unix"
+end
+
+if OS() == "win" then
+vim.cmd([[
+set shell=powershell
+set shellcmdflag=-command
+set shellquote=\"
+set shellxquote=
+]])
+end
+
 toggleterm.setup({
     size = 20,
     open_mapping = [[<c-\>]],
