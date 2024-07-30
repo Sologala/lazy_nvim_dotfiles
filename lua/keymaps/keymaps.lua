@@ -127,6 +127,8 @@ keymap("n", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
 keymap("v", "<leader>s", "<cmd>lua require('flash').jump()<cr>", opts)
 -- keymap("n", "f", "<cmd>lua require('flash').jump()<cr>", opts)
 -- keymap("v", "f", "<cmd>lua require('flash').jump()<cr>", opts)
+keymap("v", "me", "<cmd>Translate ZH<cr><Esc>", opts)
+keymap("v", "mz", "<cmd>Translate EN<cr><Esc>", opts)
 
 local function open_vscode_if_present()
     local cwd = vim.fn.getcwd()
