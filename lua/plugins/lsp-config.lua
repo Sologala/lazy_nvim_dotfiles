@@ -161,6 +161,8 @@ return {
             }
 
             lspconfig.pyright.setup {
+                on_attach = on_attach,
+                capabilities = capabilities,
                 settings = {
                     pyright = { autoImportCompletion = true, },
                     python = {
