@@ -144,3 +144,6 @@ local function open_vscode_if_present()
 end
 
 vim.api.nvim_create_user_command("Vscode", open_vscode_if_present, {})
+vim.api.nvim_create_user_command("Cfp", function()
+    print(vim.fn.expand('%:p'))
+end, {})
