@@ -256,6 +256,7 @@ return {
             formatters_by_ft = {
                 lua = { 'stylua' },
                 cpp = { "clang-format" },
+                python = { "autopep8" },
             },
             formatters = {
                 ["clang-format"] = {
