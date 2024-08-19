@@ -53,3 +53,13 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword-=-]]
 vim.cmd [[set nofixendofline]]
+
+vim.cmd([[
+                augroup set-commentstring-ag
+                autocmd!
+                autocmd BufEnter *.c,*.cc,*.cpp,*.h,*.hpp :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+                " when you've changed the name of a file opened in a buffer, the file type may have changed
+                autocmd BufFilePost *.c,*.cc,*.cpp,*.h,*.hpp :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+                augroup END
+                ]]
+            )
