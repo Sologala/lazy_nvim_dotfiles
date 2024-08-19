@@ -100,7 +100,8 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls', 'lemminx', "bashls" }
+            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls', 'lemminx', "bashls",
+                "lua_ls" }
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
@@ -123,7 +124,6 @@ return {
             --         }
             --     }
             -- }
-            lspconfig.bashls.setup {}
             lspconfig.lemminx.setup {
                 cmd = { "lemminx" },
                 single_file_support = true,
@@ -138,12 +138,16 @@ return {
                 single_file_support = true,
             }
             lspconfig.gopls.setup {
+                on_attach = on_attach,
+                capabilities = capabilities,
                 cmd = { "gopls" },
                 filetypes = { "go", "gomod", "gowork", "gotmpl" },
                 root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
                 single_file_support = true,
             }
             lspconfig.tsserver.setup {
+                on_attach = on_attach,
+                capabilities = capabilities,
                 cmd = { "typescript-language-server", "--stdio" },
                 init_options = {
                     hostInfo = "neovim"
@@ -152,6 +156,8 @@ return {
                 single_file_support = true,
             }
             lspconfig.cmake.setup {
+                on_attach = on_attach,
+                capabilities = capabilities,
                 init_options = {
                     buildDirectory = "build"
                 },
@@ -177,6 +183,8 @@ return {
 
             -- Lua
             lspconfig.lua_ls.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         runtime = {
@@ -185,12 +193,6 @@ return {
                         diagnostics = {
                             -- Get the language server to recognize the `vim` global
                             globals = { "vim", "describe", "before_each", "after_each", "it" },
-                        },
-                        workspace = {
-                            -- Make the server aware of Neovim runtime files
-                            library = {
-                                "/home/ziontee113/.config/nvim-custom-plugin/zion-kit/",
-                            },
                         },
                         telemetry = {
                             enable = false,
@@ -243,11 +245,8 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = { "lua_ls", "cland", "pyright" },
+            ensure_installed = { "lua_ls", "clangd", "pyright", "jsonls", "bashls" },
         },
-        config = function()
-            require("mason-lspconfig").setup()
-        end,
     },
     {
         'stevearc/conform.nvim',

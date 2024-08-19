@@ -12,7 +12,7 @@ return {
                     require'dap'.toggle_breakpoint()
                 end,
                 mode = 'n',
-                desc = '[F]ormat buffer',
+                desc = 'Set BreakPoint',
             },
             {
                 '<F5>',
@@ -23,7 +23,7 @@ return {
                     require'dap'.continue()
                 end,
                 mode = 'n',
-                desc = '[F]ormat buffer',
+                desc = 'Launch Debug',
             },
 
             {
@@ -32,7 +32,7 @@ return {
                     require'dap'.step_over()
                 end,
                 mode = 'n',
-                desc = '[F]ormat buffer',
+                desc = 'StepOver',
             },
             {
                 '<F11>',
@@ -40,7 +40,7 @@ return {
                     require'dap'.step_into()
                 end,
                 mode = 'n',
-                desc = '[F]ormat buffer',
+                desc = 'StepInto',
             },
             {
                 '<F4>',
@@ -49,7 +49,7 @@ return {
                     require("dapui").close()
                 end,
                 mode = 'n',
-                desc = '[F]ormat buffer',
+                desc = 'CloseDebug',
             }, 
             {
                 '<F3>',
@@ -57,7 +57,7 @@ return {
                     require("dapui").toggle()
                 end,
                 mode = 'n',
-                desc = '[F]ormat buffer',
+                desc = 'ToggleDapUI',
             }, 
         },
 
