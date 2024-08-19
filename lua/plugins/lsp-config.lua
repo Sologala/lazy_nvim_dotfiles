@@ -211,18 +211,18 @@ return {
                     "clangd",             -- NOTE: 只支持clangd 13.0.0 及其以下版本，新版本会有问题
                     "--background-index", -- 后台建立索引，并持久化到disk
                     "--clang-tidy",       -- 开启clang-tidy
-                    -- "--query-driver=/usr/bin/clang++-18",
+                    "--query-driver=/usr/local/gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-g++",
                     -- 指定clang-tidy的检查参数， 摘抄自cmu15445. 全部参数可参考 https://clang.llvm.org/extra/clang-tidy/checks
                     "--completion-style=detailed",
                     "--cross-file-rename=true",
                     --"--header-insertion=iwyu",
                     "--pch-storage=memory",
                     -- 启用这项时，补全函数时，将会给参数提供占位符，键入后按 Tab 可以切换到下一占位符
-                    "--function-arg-placeholders=true",
+                    "--function-arg-placeholders=false",
                     "--log=verbose",
                     --"--ranking-model=decision_forest",
                     -- "--compile-commands-dir=.",
-                    "--compile-commands-dir=build",
+                    "--compile-commands-dir=.",
                     -- 输入建议中，已包含头文件的项与还未包含头文件的项会以圆点加以区分
                     --"--header-insertion-decorators",
                     "--fallback-style=Microsoft",

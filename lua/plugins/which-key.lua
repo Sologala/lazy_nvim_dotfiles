@@ -257,6 +257,9 @@ return {
                     "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
                     "Workspace Symbols",
                 },
+                c = {
+                    "<cmd>Vscode<cr>", "vscode"
+            }
             },
 
             -- h = {

@@ -139,6 +139,7 @@ local function open_vscode_if_present()
         os.execute("code .")
     else
         -- 顯示消息
+        os.execute("code .")
         print(".vscode directory not found.")
     end
 end

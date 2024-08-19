@@ -3,12 +3,12 @@ return {
     opts = {
         default = {
             command = "google",
-            output = "register",
+            output = "replace",
         },
         preset = {
             output = {
                 register = {
-                    name = "*",
+                    name = "+",
                 },
                 split = {
                     position = "bottom",
