@@ -222,6 +222,7 @@ return {
                     -- 启用这项时，补全函数时，将会给参数提供占位符，键入后按 Tab 可以切换到下一占位符
                     "--function-arg-placeholders=false",
                     "--log=verbose",
+                    "--malloc-trim",
                     --"--ranking-model=decision_forest",
                     -- "--compile-commands-dir=.",
                     "--compile-commands-dir=.",
