@@ -1,6 +1,8 @@
 return {
     "folke/which-key.nvim",
     config = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 60
         local setups = {
             plugins = {
                 marks = false,        -- shows a list of your marks on ' and `
@@ -15,7 +17,7 @@ return {
                     operators = false,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
                     motions = false,      -- adds help for motions
                     text_objects = false, -- help for text objects triggered after entering an operator
-                    windows = true,       -- default bindings on <c-w>
+                    windows = false,       -- default bindings on <c-w>
                     nav = true,           -- misc bindings to work with windows
                     z = true,            -- bindings for folds, spelling and others prefixed with z
                     g = false,            -- bindings for prefixed with g
@@ -161,20 +163,17 @@ return {
             --   -- u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
             -- },
             --
-            T = {
-                name = "Trouble",
-                t = { "<cmd>Trouble<cr>", "ToggleTrouble" },
-                d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },
-                w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
-                q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
-                u = { "<cmd>Trouble lsp_references<cr>", "Usage" },
-                g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
-            },
             t = {
-                c = { "<cmd> lua require('telescope.builtin').command_history()<cr>", "Command History" },
-                f = { "<cmd> lua require('telescope.builtin').oldfiles()<cr>", "OpenedFile History" },
-                s = { "<cmd> lua require('telescope.builtin').search_history()<cr>", "Search History" },
-                t = { "<cmd> TodoTelescope<cr>", "TODO" }
+                name = "Trouble",
+                t = { "<cmd>Trouble todo<cr>", "ToggleTrouble" },
+                -- d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },
+                -- w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
+                q = { "<cmd>Trouble quickfix<cr>", "Quick Fix" },
+                -- g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
+                -- c = { "<cmd> lua require('telescope.builtin').command_history()<cr>", "Command History" },
+                -- f = { "<cmd> lua require('telescope.builtin').oldfiles()<cr>", "OpenedFile History" },
+                -- s = { "<cmd> lua require('telescope.builtin').search_history()<cr>", "Search History" },
+                -- t = { "<cmd> TodoTelescope<cr>", "TODO" }
             },
 
             -- g = {
@@ -250,13 +249,12 @@ return {
                     "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
                     "Prev Diagnostic",
                 },
-                q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
                 r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-                s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-                S = {
-                    "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-                    "Workspace Symbols",
-                },
+                -- s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+                -- S = {
+                --     "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+                --     "Workspace Symbols",
+                -- },
                 c = {
                     "<cmd>Vscode<cr>", "vscode"
             }

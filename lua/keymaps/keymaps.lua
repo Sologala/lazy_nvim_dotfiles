@@ -35,7 +35,7 @@ keymap("n", "<silent>*", "syiw<Esc>: let @/ = @s<CR>", opts)
 
 
 -- NOTE: require winshit plugin
-keymap("n", "<C-W>m", ":WinShift<cr>", opts)
+keymap("n", "<C-w>m", ":WinShift<cr>", opts)
 
 -- i j remap to gi gj to get the consistent behaviour in wrap content mode (i.e. set wrap)
 -- keymap("n", "j", "<Plug>(accelerated_jk_gj)", opts)

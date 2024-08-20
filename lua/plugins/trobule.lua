@@ -2,18 +2,24 @@ return {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-        --
-        position = "bottom", -- position of the list can be: bottom, top, left, right
-        auto_close = true,
-        action_keys = {
-            jump = { "<tab>", "<2-leftmouse>" }, -- jump to the diagnostic or open / close folds
-            open_split = { "<c-x>" },        -- open buffer in new split
-            open_vsplit = { "<c-v>" },       -- open buffer in new vsplit
-            open_tab = { "<c-t>" },          -- open buffer in new tab
-            jump_close = { "<cr>", "o", },   -- jump to the diagnostic and close the list
+        auto_close = false,                         -- auto close when there are no items
+        auto_open = false,                          -- auto open when there are items
+        auto_preview = true,                       -- automatically open preview when on an item
+        auto_refresh = true,                        -- auto refresh when open
+        auto_jump = false,                          -- auto jump to the item when there's only one
+        focus = true,                               -- Focus the window when opened
+        restore = false,                            -- restores the last location in the list when opening
+        follow = true,                              -- Follow the current item
+        indent_guides = true,                       -- show indent guides
+        max_items = 200,                            -- limit number of items that can be displayed per section
+        multiline = true,                           -- render multi-line messages
+        pinned = false,                             -- When pinned, the opened trouble window will be bound to the current buffer
+        warn_no_results = true,                     -- show a warning when there are no results
+        open_no_results = false,                    -- open the trouble window when there are no results
+        ---@type trouble.Window.opts
+        win = { type = "float", position = "right" }, -- window options for the results window. Can be a split or a floating window.
+        keys = {
+            ["<cr>"] = "jump_close"
         }
     },
 }
