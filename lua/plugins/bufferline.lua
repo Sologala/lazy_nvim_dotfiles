@@ -1,5 +1,6 @@
 return {
     "akinsho/bufferline.nvim",
+    event="BufReadPost",
     opts = {
         options = {
             mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -74,7 +75,6 @@ return {
             -- end
         },
     },
-    event = "VeryLazy",
     config = function()
         vim.opt.termguicolors = true
         require('bufferline').setup()

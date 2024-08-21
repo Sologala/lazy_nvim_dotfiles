@@ -1,7 +1,7 @@
 return {
   'stevearc/aerial.nvim',
   opts = {},
-  event = "VeryLazy",
+  event = "BufReadPost",
   -- Optional dependencies
   dependencies = {
      "nvim-treesitter/nvim-treesitter",

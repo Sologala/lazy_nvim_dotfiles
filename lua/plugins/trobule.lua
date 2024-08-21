@@ -1,5 +1,6 @@
 return {
     "folke/trouble.nvim",
+    event = "BufReadPost",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         auto_close = false,                         -- auto close when there are no items

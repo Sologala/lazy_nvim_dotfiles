@@ -1,7 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
+        event = "BufReadPost",
         config = function()
             -- Code Formatting (from null-ls)
             -- local LspFormattingAugroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -247,14 +247,14 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        event = "VeryLazy",
+        event = "BufReadPost",
         opts = {
             ensure_installed = { "lua_ls", "clangd", "pyright", "jsonls", "bashls" },
         },
     },
     {
         'stevearc/conform.nvim',
-        event = "VeryLazy",
+        event = "BufReadPost",
         opts = {
             notify_on_error = true,
             formatters_by_ft = {
