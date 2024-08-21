@@ -1,6 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        event = "VeryLazy",
         config = function()
             -- Code Formatting (from null-ls)
             -- local LspFormattingAugroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -239,18 +240,21 @@ return {
     },
     {
         "williamboman/mason.nvim",
+        event = "VeryLazy",
         config = function()
             require("mason").setup()
         end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        event = "VeryLazy",
         opts = {
             ensure_installed = { "lua_ls", "clangd", "pyright", "jsonls", "bashls" },
         },
     },
     {
         'stevearc/conform.nvim',
+        event = "VeryLazy",
         opts = {
             notify_on_error = true,
             formatters_by_ft = {

@@ -74,6 +74,7 @@ return {
             -- end
         },
     },
+    event = "VeryLazy",
     config = function()
         vim.opt.termguicolors = true
         require('bufferline').setup()
