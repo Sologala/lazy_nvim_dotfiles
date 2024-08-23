@@ -108,7 +108,8 @@ return {
                     theme = "dropdown",
                     previewer = true,
                     -- find_command = { "find", "-type", "f" },
-                    find_command = { "fd", "-H", "-I", "--type", "f", "--strip-cwd-prefix=always" }, -- "-H" search hidden files, "-I" do not respect to gitignore
+                    -- find_command = { "fd", "-H", "-I", "-t f", "--strip-cwd-prefix=always" }, -- "-H" search hidden files, "-I" do not respect to gitignore
+                    find_command = { "fd", "-H", "-I", "--type", "f"}, -- "-H" search hidden files, "-I" do not respect to gitignore
                 },
             },
             extensions = {
