@@ -22,9 +22,9 @@ return {
             {
                 '<F5>',
                 function()
-                    if vim.fn.filereadable(".vscode/launch.json") then
-                        require("dap.ext.vscode").load_launchjs(nil, { cpptools = { "c", "cpp" } })
-                    end
+                    -- if vim.fn.filereadable(".vscode/launch.json") then
+                    --     require("dap.ext.vscode").load_launchjs(nil, { cpptools = { "c", "cpp" } })
+                    -- end
                     require 'dap'.continue()
                 end,
                 mode = 'n',
@@ -65,6 +65,12 @@ return {
                 desc = 'ToggleDapUI',
             },
         },
+        config = function()
+            require("dapui").setup({
+                ensure_installed = { "cppdbg" }
+            })
+            require("dap.ext.vscode").load_launchjs(nil, { cpptools = { "c", "cpp" } })
+        end
 
     },
     {
