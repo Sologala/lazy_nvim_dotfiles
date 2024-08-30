@@ -254,7 +254,8 @@ return {
     },
     {
         'stevearc/conform.nvim',
-        event = "BufReadPost",
+        event = "BufWritePre",
+        tag = 'v7.1.0',
         opts = {
             notify_on_error = true,
             formatters_by_ft = {
