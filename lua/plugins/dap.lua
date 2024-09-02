@@ -1,12 +1,12 @@
 return {
     {
         "mfussenegger/nvim-dap",
-        event = "BufReadPost"
+        event = "VeryLazy"
     },
     {
         "jay-babu/mason-nvim-dap.nvim",
         dependencies = { "mfussenegger/nvim-dap" },
-        event = "BufReadPost",
+        event = "VeryLazy",
         opts = {
             ensure_installed = { "cppdbg" }
         },
@@ -75,7 +75,7 @@ return {
     },
     {
         "rcarriga/nvim-dap-ui",
-        event = "BufReadPost",
+        event = "VeryLazy",
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio", "jay-babu/mason-nvim-dap.nvim" },
         config = function()
             local dap, dapui = require("dap"), require("dapui")
