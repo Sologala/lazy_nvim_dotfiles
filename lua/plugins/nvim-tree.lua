@@ -90,6 +90,11 @@ return {
             },
 
         },
+        actions = {
+            open_file = {
+                quit_on_open = true
+            }
+        },
 
         on_attach = function(bufnr)
             local api = require "nvim-tree.api"
@@ -108,8 +113,8 @@ return {
                 local node = api.tree.get_node_under_cursor()
                 print(node.absolute_path)
                 if node then
-                    print("nautilus "..node.absolute_path)
-                    vim.fn.jobstart("nautilus "..node.absolute_path, { detach = true })
+                    print("nautilus " .. node.absolute_path)
+                    vim.fn.jobstart("nautilus " .. node.absolute_path, { detach = true })
                 end
             end, opts('Nautilus'))
             -- vim.keymap.set('n', 'O, api.node.navigate.git.next, opts('Next Git'))
