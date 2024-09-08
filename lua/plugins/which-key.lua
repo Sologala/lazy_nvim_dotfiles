@@ -192,7 +192,7 @@ return {
 
             g = {
                 name = "Git",
-                g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+                -- g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
                 f = { "<cmd>DiffviewFileHistory<CR>", "File History" },
                 p = { "<cmd>DiffviewOpen<CR>", "Diff Project" },
                 n = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },

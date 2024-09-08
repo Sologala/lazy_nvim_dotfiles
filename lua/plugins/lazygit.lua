@@ -1,28 +1,28 @@
 return {
-    {
-        "kdheepak/lazygit.nvim",
-        -- optional for floating window border decoration
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        -- order to load the plugin when the command is run for the first time
-        -- keys = {
-        --     { "<space>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-        -- },
-        config = function()
-            require("telescope").load_extension("lazygit")
-            -- vim.cmd("autocmd! BufEnter *:lua require('lazygit.utils').project_root_dir()")
-        end,
-    },
+    -- {
+    --     "kdheepak/lazygit.nvim",
+    --     -- optional for floating window border decoration
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    --
+    --     cmd = {
+    --         "LazyGit",
+    --         "LazyGitConfig",
+    --         "LazyGitCurrentFile",
+    --         "LazyGitFilter",
+    --         "LazyGitFilterCurrentFile",
+    --     },
+    --     -- order to load the plugin when the command is run for the first time
+    --     -- keys = {
+    --     --     { "<space>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    --     -- },
+    --     config = function()
+    --         require("telescope").load_extension("lazygit")
+    --         -- vim.cmd("autocmd! BufEnter *:lua require('lazygit.utils').project_root_dir()")
+    --     end,
+    -- },
     {
         "willothy/flatten.nvim",
         config = true,
