@@ -37,4 +37,9 @@ M.GetWord = function()
     local word = vim.api.nvim_call_function("expand", { "<cword>" })
     return word
 end
+
+M.Platform = function()
+    return package.config:sub(1, 1) == "\\" and "win" or "unix"
+end
+
 return M
