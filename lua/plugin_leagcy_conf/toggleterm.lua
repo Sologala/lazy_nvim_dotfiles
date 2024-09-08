@@ -83,8 +83,9 @@ function _lazygit_toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<space>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", [[<C-\]], "<cmd>lua _NODE_TOGGLE()<CR>", { noremap = true, silent = true })
 
-local node = Terminal:new({ cmd = "node", hidden = true })
+local node = Terminal:new({hidden = true })
 
 function _NODE_TOGGLE()
     node:toggle()
