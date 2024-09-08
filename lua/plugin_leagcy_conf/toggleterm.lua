@@ -15,7 +15,7 @@ end
 
 toggleterm.setup({
     size = 20,
-    open_mapping = [[<c-\>]],
+    -- open_mapping = [[<c-\>]],
     hide_numbers = true,
     shade_filetypes = {},
     shade_terminals = true,
@@ -65,11 +65,9 @@ local lazygit = Terminal:new({
     -- function to run on opening the terminal
     on_open = function(term)
         vim.cmd("startinsert!")
-        vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-q>", "<cmd>lua _lazygit_toggle()<CR>",
+        vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-q>", "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
             { noremap = true, silent = true })
-        vim.api.nvim_buf_set_keymap(term.bufnr, "i", "<C-q>", "<cmd>lua _lazygit_toggle()<CR>",
-            { noremap = true, silent = true })
-        vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-q>", "<cmd>lua _lazygit_toggle()<CR>",
+        vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-\\>", "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
             { noremap = true, silent = true })
     end,
     -- function to run on closing the terminal
@@ -77,34 +75,32 @@ local lazygit = Terminal:new({
         vim.cmd("startinsert!")
     end,
 })
-
-function _lazygit_toggle()
+function _LAZYGIT_TOGGLE()
     lazygit:toggle()
 end
+vim.api.nvim_set_keymap("n", "<space>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<space>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", [[<C-\]], "<cmd>lua _NODE_TOGGLE()<CR>", { noremap = true, silent = true })
 
-local node = Terminal:new({hidden = true })
-
-function _NODE_TOGGLE()
-    node:toggle()
+local cmd = Terminal:new({
+    direction = "float",
+    float_opts = {
+        border = "double",
+    },
+    -- function to run on opening the terminal
+    on_open = function(term)
+        vim.cmd("startinsert!")
+        vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-q>", "<cmd>lua _CMD_TOGGLE()<CR>",
+            { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-\\>", "<cmd>lua _CMD_TOGGLE()<CR>",
+            { noremap = true, silent = true })
+    end,
+    -- function to run on closing the terminal
+    on_close = function(term)
+        vim.cmd("startinsert!")
+    end,
+})
+function _CMD_TOGGLE()
+    cmd:toggle()
 end
 
-local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
-
-function _NCDU_TOGGLE()
-    ncdu:toggle()
-end
-
-local htop = Terminal:new({ cmd = "htop", hidden = true })
-
-function _HTOP_TOGGLE()
-    htop:toggle()
-end
-
-local python = Terminal:new({ cmd = "python", hidden = true })
-
-function _PYTHON_TOGGLE()
-    python:toggle()
-end
+vim.api.nvim_set_keymap("n", [[<c-\>]], "<cmd>lua _CMD_TOGGLE()<CR>", { noremap = true, silent = true })
