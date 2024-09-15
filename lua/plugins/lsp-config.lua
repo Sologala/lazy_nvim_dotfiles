@@ -218,7 +218,7 @@ return {
                 "--function-arg-placeholders=false",
                 --"--ranking-model=decision_forest",
                 -- "--compile-commands-dir=.",
-                "--compile-commands-dir=.",
+                "--compile-commands-dir=build",
                 -- 输入建议中，已包含头文件的项与还未包含头文件的项会以圆点加以区分
                 --"--header-insertion-decorators",
                 "--fallback-style=Microsoft",
