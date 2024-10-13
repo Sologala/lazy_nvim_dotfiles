@@ -17,9 +17,9 @@ return {
                     operators = false,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
                     motions = false,      -- adds help for motions
                     text_objects = false, -- help for text objects triggered after entering an operator
-                    windows = false,       -- default bindings on <c-w>
+                    windows = false,      -- default bindings on <c-w>
                     nav = true,           -- misc bindings to work with windows
-                    z = true,            -- bindings for folds, spelling and others prefixed with z
+                    z = true,             -- bindings for folds, spelling and others prefixed with z
                     g = false,            -- bindings for prefixed with g
                 },
             },
@@ -257,7 +257,7 @@ return {
                 -- },
                 c = {
                     "<cmd>Vscode<cr>", "vscode"
-            }
+                }
             },
 
             -- h = {
@@ -270,7 +270,12 @@ return {
             --   u = { "<cmd>HSRmHighlight<cr>", "RemoveHighlight" },
             --   U = { "<cmd>HSRmHighlight rm_all<cr>", "RemoveAllHighlight" },
             -- },
-
+            p = {
+                name = "Parrot",
+                n = { "<cmd>PrtChatNew<cr>", "new chat markdown" },
+                m = { "<cmd>PrtModel<cr>", "select model" },
+                a = { "<cmd>PrtAsk<cr>", "select model" },
+            },
             h = {
                 name = "Help",
                 -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
