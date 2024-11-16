@@ -74,16 +74,16 @@ return {
                 local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
                 vim.keymap.set("n", "gd", vim.lsp.buf.declaration, bufopts)
-                --[[ vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts) ]]
+                -- --[[ vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts) ]]
                 vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
                 vim.keymap.set("n", "gD", vim.lsp.buf.implementation, bufopts)
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
                 vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
-
-                vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_prev({ border = "rounded" }), bufopts)
-                vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_next({ border = "rounded" }), bufopts)
-
-
+                --
+                -- vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_prev({ border = "rounded" }), bufopts)
+                -- vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_next({ border = "rounded" }), bufopts)
+                --
+                --
                 vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", bufopts)
 
                 -- vim.keymap.set("n", "<A-j>", vim.diagnostic.goto_next)
