@@ -355,6 +355,7 @@ return {
     ,
     {
         'Sologala/generate.nvim',
+        event = "VeryLazy",
         dependencies = { 'nvim-treesitter/nvim-treesitter', "neovim/nvim-lspconfig" },
         -- dir = "~/repo/generate.nvim",
     }

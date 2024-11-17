@@ -1,14 +1,29 @@
 return {
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-buffer' },
+    {
+        'hrsh7th/cmp-nvim-lsp',
+        dependencies = {
+            'hrsh7th/nvim-cmp',
+        },
+    },
+    {
+        'hrsh7th/cmp-path',
+        dependencies = {
+            'hrsh7th/nvim-cmp',
+        },
+    },
+    {
+        'hrsh7th/cmp-buffer',
+        dependencies = {
+            'hrsh7th/nvim-cmp',
+        },
+    },
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
-        dependencies = { "rafamadriz/friendly-snippets" },
+        dependencies = { "rafamadriz/friendly-snippets", 'hrsh7th/nvim-cmp' },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load() -- load freindly-snippets
             require("luasnip.loaders.from_vscode").load({
@@ -17,10 +32,22 @@ return {
                 }
             })
         end,
+        event = "BufReadPost",
+
     },
-    { 'saadparwaiz1/cmp_luasnip' },
     {
-        "Sologala/cmp-en-hint"
+        'saadparwaiz1/cmp_luasnip',
+        dependencies = {
+            'hrsh7th/nvim-cmp',
+        },
+        event = "BufReadPost",
+    },
+    {
+        "Sologala/cmp-en-hint",
+        dependencies = {
+            'hrsh7th/nvim-cmp',
+        },
+        event = "BufReadPost",
     },
     {
         'hrsh7th/nvim-cmp',
@@ -140,6 +167,6 @@ return {
                 })
             })
         end,
-
+        event = "BufReadPost",
     },
 }
