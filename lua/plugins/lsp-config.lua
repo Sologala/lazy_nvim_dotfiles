@@ -352,5 +352,10 @@ return {
     --         })
     --     end
     -- }
-
+    ,
+    {
+        'Sologala/generate.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', "neovim/nvim-lspconfig" },
+        -- dir = "~/repo/generate.nvim",
+    }
 }
