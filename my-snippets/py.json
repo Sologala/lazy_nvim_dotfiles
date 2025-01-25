@@ -1,0 +1,13 @@
+{
+    "Python __main__ function": {
+        "prefix": "main",
+        "body": [
+            "def main():",
+            "\tpass",
+            "",
+            "if __name__ == \"__main__\":",
+            "\tmain()"
+        ],
+        "description": "Insert Python __main__ function"
+    }
+}

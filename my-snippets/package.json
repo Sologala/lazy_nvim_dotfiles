@@ -24,6 +24,10 @@
             {
                 "language": "yaml",
                 "path": "./clang-format.json"
+            },
+            {
+                "language": "python",
+                "path": "./py.json"
             }
         ]
     }
