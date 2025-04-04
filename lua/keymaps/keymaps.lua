@@ -23,10 +23,10 @@ keymap("", ";", "<Nop>", opts)
 -- Better window navigation
 
 -- If tmux.nvim is opened, then the binding here should be turned off
--- keymap("n", "<C-h>", "<C-w>h", opts)
--- keymap("n", "<C-j>", "<C-w>j", opts)
--- keymap("n", "<C-k>", "<C-w>k", opts)
--- keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<silent>*", "syiw<Esc>: let @/ = @s<CR>", opts)
 
@@ -54,7 +54,7 @@ keymap("n", "<C-w>m", ":WinShift<cr>", opts)
 -- keymap('v', '<leader>f', "<ESC><cmd>lua vim.lsp.buf.formatexpr()<CR>", opts)
 
 -- save buffer
-keymap("n", "<leader>w", ":w<cr>", opts)
+keymap("n", "<leader>w", ":w!<cr>", opts)
 -- exit cur window
 keymap("n", "<leader>d", ":q<cr>", opts)
 -- delete cur buffer
