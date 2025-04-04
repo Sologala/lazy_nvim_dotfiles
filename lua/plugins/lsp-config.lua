@@ -72,8 +72,21 @@ return {
                 vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
                 require "lsp_signature".on_attach(lsp_signature_cfg, bufnr) -- Note: add in lsp client on-attach
                 local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-                vim.keymap.set("n", "gd", vim.lsp.buf.declaration, bufopts)
+                local tc_builtin = require('telescope.builtin')
+                -- vim.keymap.set("n", "gd", vim.lsp.buf.declaration, bufopts)
+                -- 使用 telescope 窗口进行多个重载对象的选择, 以替代 vim.ui.select
+                vim.keymap.set('n', 'gd', function()
+                    tc_builtin.lsp_definitions(
+                        {
+                            layout_strategy = 'vertical',
+                            -- 设置布局配置
+                            layout_config = {
+                                -- 禁用预览窗口
+                                preview_cutoff = 0,
+                            },
+                        }
+                    )
+                end, {})
                 -- --[[ vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts) ]]
                 vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
                 vim.keymap.set("n", "gD", vim.lsp.buf.implementation, bufopts)
@@ -256,6 +269,9 @@ return {
                 filetypes = { "c", "cpp", "objc", "objcpp" },
             })
         end,
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+        }
     },
     {
         "williamboman/mason.nvim",
