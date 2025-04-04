@@ -7,11 +7,18 @@ end
 -- Define a function to check the status and return the corresponding icon
 local function get_status_icon()
     local status = require("ollama").status()
+    local ollama_is_running = get_condition()
 
-    if status == "IDLE" then
-        return '󰳆󰉁'
-    elseif status == "WORKING" then
-        return '󰳆󰉃'
+    if ollama_is_running then
+        if status == "IDLE" then
+            return '󰳆'
+        elseif status == "WORKING" then
+            return '󰉁'
+        else
+            return '󰉃'
+        end
+    else
+        return '󰉃'
     end
 end
 
@@ -68,7 +75,7 @@ return {
                 { 'filename', color = { bg = 'green' } }
             },
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
-            lualine_y = { 'progress' , get_status_icon},
+            lualine_y = { 'progress', get_status_icon },
             lualine_z = { 'location' }
         },
         inactive_sections = {
