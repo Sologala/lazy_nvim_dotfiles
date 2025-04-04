@@ -280,13 +280,17 @@ return {
             formatters_by_ft = {
                 lua = { 'stylua' },
                 cpp = { "clang-format" },
-                python = { "autopep8" },
+                python = { "black" },
             },
             formatters = {
                 ["clang-format"] = {
                     -- prepend_args = { "-style", "Microsoft" },
-                    -- prepend_args = { "-style", "{BasedOnStyle: Microsoft, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true, AlignEscapedNewlines: Right, AlignTrailingComments: true, AllowShortBlocksOnASingleLine: false, AlwaysBreakBeforeMultilineStrings: false, AlwaysBreakTemplateDeclarations: Yes, IndentWidth: 4, TabWidth: 4, UseTab: Never, PointerAlignment: Right, Standard: Cpp11}" },
+                    prepend_args = { "-style", "{BasedOnStyle: Microsoft, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true, AlignEscapedNewlines: Right, AlignTrailingComments: true, AllowShortBlocksOnASingleLine: false, AlwaysBreakBeforeMultilineStrings: false, AlwaysBreakTemplateDeclarations: Yes, IndentWidth: 4, TabWidth: 4, UseTab: Never, PointerAlignment: Right, Standard: Cpp11}" },
                 },
+                ["black"] = {
+                    -- Maximum 120 characters per line
+                    prepend_args = { "-l", "120" },
+                }
             }
         },
         keys = {
