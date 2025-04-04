@@ -1,3 +1,20 @@
+-- Define a function to check that ollama is installed and working
+local function get_condition()
+    return package.loaded["ollama"] and require("ollama").status ~= nil
+end
+
+
+-- Define a function to check the status and return the corresponding icon
+local function get_status_icon()
+    local status = require("ollama").status()
+
+    if status == "IDLE" then
+        return '󰳆󰉁'
+    elseif status == "WORKING" then
+        return '󰳆󰉃'
+    end
+end
+
 return {
     'nvim-lualine/lualine.nvim',
     opts = {
@@ -51,7 +68,7 @@ return {
                 { 'filename', color = { bg = 'green' } }
             },
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
-            lualine_y = { 'progress' },
+            lualine_y = { 'progress' , get_status_icon},
             lualine_z = { 'location' }
         },
         inactive_sections = {

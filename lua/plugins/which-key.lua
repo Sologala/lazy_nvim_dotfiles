@@ -271,10 +271,10 @@ return {
             --   U = { "<cmd>HSRmHighlight rm_all<cr>", "RemoveAllHighlight" },
             -- },
             p = {
-                name = "Parrot",
-                n = { "<cmd>PrtChatNew<cr>", "new chat markdown" },
-                m = { "<cmd>PrtModel<cr>", "select model" },
-                a = { "<cmd>PrtAsk<cr>", "select model" },
+                name = "Ollama",
+                p =  { "<cmd>Ollama<cr>", "prompt" },
+                S = { "<cmd>OllamaServeStop<cr>", "stop ollama" },
+                s = { "<cmd>OllamaServe<cr>", "start ollama" }
             },
             h = {
                 name = "Help",
