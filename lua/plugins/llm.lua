@@ -39,7 +39,7 @@ return {
 
         ---@type Ollama.Config
         opts = {
-            model = "deepseek-r1:1.5b",
+            model = "zongwei/gemma3-translator:1b",
             url = "http://127.0.0.1:11434",
             serve = {
                 on_start = false,
@@ -51,22 +51,21 @@ return {
             -- View the actual default prompts in ./lua/ollama/prompts.lua
             prompts = {
                 TranslateEng2CN = {
-                    prompt = "翻译以下段落为中文 \n\n```$sel```",
-                    -- model = "llama2-chinese",
+                    prompt = "Translate from English to Chinese: $sel",
                     action = "display",
-                    extract = "```$ftype\n(.-)```"
+                    -- extract = "```$ftype\n(.-)```"
+                    -- extract = "```$ftype\n(.-)```"
                 },
                 TranslateCN2Eng = {
-                    prompt = "翻译一下段落为英语 \n\n```$sel\n```",
-                    -- model = "llama2-chinese",
+                    prompt = "Translate from Chinese to English: $sel",
                     action = "display",
-                    extract = "```$ftype\n(.-)```"
+                    -- extract = "```$ftype\n(.-)```"
                 },
                 ExplainWord = {
-                    prompt = "解释一下这个单词, 词性，并造句举例 \n\n```$sel\n```",
+                    prompt = "用中文解释一下这个单词, 词性，并造句举例及其翻译: $sel",
                     -- model = "llama2-chinese",
                     action = "display",
-                    extract = "```$ftype\n(.-)```"
+                    -- extract = "```$ftype\n(.-)```"
                 },
                 ExplainCode = {
                     prompt = "解释一下代码 \n```$ftype\n$sel\n```",
