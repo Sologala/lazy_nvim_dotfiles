@@ -39,7 +39,10 @@ return {
 
         ---@type Ollama.Config
         opts = {
-            model = "zongwei/gemma3-translator:1b",
+            -- model = "omercelik/gemmax2-9b",
+            -- model = "zongwei/gemma3-translator:4b",
+            -- model = "qwen3:1.7b",
+            model = "qwen3:0.6b",
             url = "http://127.0.0.1:11434",
             serve = {
                 on_start = false,
@@ -51,25 +54,31 @@ return {
             -- View the actual default prompts in ./lua/ollama/prompts.lua
             prompts = {
                 TranslateEng2CN = {
-                    prompt = "Translate from English to Chinese: $sel",
+                    prompt = "/no_think Translate this from English to Chinese:\nEnglish: $sel\nChinese: ",
                     action = "display",
                     -- extract = "```$ftype\n(.-)```"
                     -- extract = "```$ftype\n(.-)```"
                 },
                 TranslateCN2Eng = {
-                    prompt = "Translate from Chinese to English: $sel",
+                    prompt = "/no_think Translate this from Chinese to English:\nChinese: $sel\nEnglish: ",
                     action = "display",
                     -- extract = "```$ftype\n(.-)```"
                 },
                 ExplainWord = {
-                    prompt = "用中文解释一下这个单词, 词性，并造句举例及其翻译: $sel",
+                    prompt = "/no_think 用中文解释一下这个单词, 词性，并造句举例及其翻译: $sel ",
                     -- model = "llama2-chinese",
                     action = "display",
                     -- extract = "```$ftype\n(.-)```"
                 },
                 ExplainCode = {
-                    prompt = "解释一下代码 \n```$ftype\n$sel\n```",
+                    prompt = "/no_think 解释一下代码 \n```$ftype\n$sel\n```",
                     -- model = "llama2-chinese",
+                    action = "display"
+                    -- extract = "```$ftype\n(.-)```"
+                },
+                SummaryGitCommit = {
+                    prompt =
+                    "/no_think 请根据以下 Git diff 内容生成符合 Conventional Commits 规范的 commit message：\n $buf",
                     action = "display"
                     -- extract = "```$ftype\n(.-)```"
                 }
