@@ -159,3 +159,50 @@ vim.api.nvim_create_user_command("Cly", function()
     vim.fn.setreg('+', result)
     print('Copied: ' .. result)
 end, {})
+
+
+local function git_diff_to_buffer()
+    -- 创建一个新的缓冲区
+    local buf = vim.api.nvim_create_buf(false, true)
+
+    -- 显示新缓冲区
+    vim.api.nvim_command('botright vsplit')
+    local win = vim.api.nvim_get_current_win()
+    vim.api.nvim_win_set_buf(win, buf)
+
+    -- 执行git diff --staged命令
+    local job = require('plenary.job'):new({
+        command = 'git',
+        args = { 'diff', '--staged' },
+        on_stdout = function(_, data)
+            if data then
+                -- 使用vim.schedule确保在主事件循环中执行
+                vim.schedule(function()
+                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, { data })
+                end)
+            end
+        end,
+        on_stderr = function(_, data)
+            if data then
+                -- 使用vim.schedule确保在主事件循环中执行
+                vim.schedule(function()
+                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "Error: " .. data })
+                end)
+            end
+        end,
+        on_exit = function(j, return_val)
+            if return_val ~= 0 then
+                -- 使用vim.schedule确保在主事件循环中执行
+                vim.schedule(function()
+                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "Git command failed with exit code: " .. return_val })
+                end)
+            end
+        end,
+    })
+
+    -- 启动作业
+    job:start()
+end
+
+-- 添加命令以方便使用
+vim.api.nvim_create_user_command('GitDiffToBuffer', git_diff_to_buffer, {})
