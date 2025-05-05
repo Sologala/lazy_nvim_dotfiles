@@ -81,6 +81,12 @@ return {
                     "/no_think 请根据以下 Git diff 内容生成符合 Conventional Commits 规范的 commit message：\n $buf",
                     action = "display"
                     -- extract = "```$ftype\n(.-)```"
+                },
+                DescripeThisFunc = {
+                    prompt =
+                    "/no_think 给一下函数或者类生成对应简介 \n```$ftype\n$sel\n```",
+                    action = "insert"
+                    -- extract = "```$ftype\n(.-)```"
                 }
             }
         }
