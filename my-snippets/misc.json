@@ -51,5 +51,13 @@
             "plt.rcParams['axes.unicode_minus' ] = False"
         ],
         "description": "Code snippet for class with inline constructor/destructor"
+    },
+    "snp-jupyter-autoreload": {
+        "prefix": "snp-jupyter-autoreload",
+        "body": [
+            "%load_ext autoreload",
+            "%autoreload 2"
+        ],
+        "description": "Code snippet for class jupyter auto reload"
     }
 }
