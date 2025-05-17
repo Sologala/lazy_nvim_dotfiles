@@ -119,7 +119,7 @@ keymap("v", "p", '"_dP', opts)
 -- file finder
 keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 -- switch source header file
-keymap("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>", opts)
+-- keymap("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<cr>", opts)
 -- find all lsp references
 keymap("n", "<leader>u", "<cmd>Trouble lsp_references<cr>", opts)
 
@@ -194,7 +194,8 @@ local function git_diff_to_buffer()
             if return_val ~= 0 then
                 -- 使用vim.schedule确保在主事件循环中执行
                 vim.schedule(function()
-                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "Git command failed with exit code: " .. return_val })
+                    vim.api.nvim_buf_set_lines(buf, -1, -1, false,
+                        { "Git command failed with exit code: " .. return_val })
                 end)
             end
         end,
@@ -206,3 +207,67 @@ end
 
 -- 添加命令以方便使用
 vim.api.nvim_create_user_command('GitDiffToBuffer', git_diff_to_buffer, {})
+
+local wk = require("which-key")
+wk.add({
+    { "<space>e",  "<cmd>NvimTreeToggle<cr>",     desc = "File",                mode = "n" },
+    { "<space>E",  "<cmd>NvimTreeFindFile<cr>",   desc = "GetCurrFile",         mode = "n" },
+    { "<space>r",  "<cmd>Telescope oldfiles<cr>", desc = "HistoryFiles",        mode = "n" },
+    { "<space>C",  "<cmd>%bd|e#<CR>",             desc = "Close Other Buffers", mode = "n" },
+    { "<space>o",  "<cmd>AerialToggle!<CR>",      desc = "Outlines",            mode = "n" },
+
+    { "<space>t",  group = "Trouble" }, -- group
+    { "<space>tt", "<cmd>Trouble todo<cr>",       desc = "ToggleTrouble",       mode = "n" },
+    { "<space>tq", "<cmd>Trouble quickfix<cr>",   desc = "Quick",               mode = "n" },
+
+})
+
+wk.add({
+    { "<space>g",  group = "Git" },
+    { "<space>gf", "<cmd>DiffviewFileHistory<CR>",                              desc = "File History",      mode = "n" },
+    { "<space>gp", "<cmd>DiffviewOpen<CR>",                                     desc = "Diff Project",      mode = "n" },
+    { "<space>gn", "<cmd>lua require 'gitsigns'.next_hunk()<cr>",               desc = "Next Hunk",         mode = "n" },
+    { "<space>gN", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>",               desc = "Prev Hunk",         mode = "n" },
+    { "<space>gl", "<cmd>lua require 'gitsigns'.blame_line({full = true})<cr>", desc = "Blame",             mode = "n" },
+    { "<space>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>",              desc = "Reset Hunk",        mode = "n" },
+    { "<space>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>",            desc = "Reset Buffer",      mode = "n" },
+    { "<space>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>",              desc = "Stage Hunk",        mode = "n" },
+    { "<space>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>",            desc = "Stage Buffer",      mode = "n" },
+    { "<space>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",         desc = "Undo Stage Hunk",   mode = "n" },
+    { "<space>gU", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",         desc = "Undo Stage Hunk",   mode = "n" },
+    { "<space>go", "<cmd>Telescope git_status<cr>",                             desc = "Open changed file", mode = "n" },
+    { "<space>gb", "<cmd>Telescope git_branches<cr>",                           desc = "Checkout branch",   mode = "n" },
+    { "<space>gc", "<cmd>Telescope git_commits<cr>",                            desc = "Checkout commit",   mode = "n" },
+    { "<space>gd", "<cmd>Gitsigns diffthis HEAD<cr>",                           desc = "Diff",              mode = "n" },
+})
+
+wk.add({
+    { "<space>R",  group = "Replace" },
+    { "<space>Rf", "<cmd>lua require('spectre').open_file_search()<CR>",              desc = "Replace File",    mode = "n" },
+    { "<space>Rp", "<cmd>lua require('spectre').open()<CR>",                          desc = "Replace Project", mode = "n" },
+    { "<space>Rs", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", desc = "Search",          mode = "n" },
+})
+
+wk.add({
+    { "<space>l",  group = "LSP" },
+    { "<space>ll", "<cmd>lua vim.lsp.buf.code_action()<cr>",       desc = "Code Action",           mode = "n" },
+    { "<space>ld", "<cmd>Telescope lsp_document_diagnostics<cr>",  desc = "Document Diagnostics",  mode = "n" },
+    { "<space>lw", "<cmd>Telescope lsp_workspace_diagnostics<cr>", desc = "Workspace Diagnostics", mode = "n" },
+    { "<space>lf", "<cmd>Format<cr>",                              desc = "Format",                mode = "n" },
+    { "<space>li", "<cmd>LspInfo<cr>",                             desc = "Info",                  mode = "n" },
+    { "<space>lI", "<cmd>Mason<cr>",                               desc = "Installer Info",        mode = "n" },
+    { "<space>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",  desc = "Next Diagnostic",       mode = "n" },
+    { "<space>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",  desc = "Prev Diagnostic",       mode = "n" },
+    { "<space>lr", "<cmd>lua vim.lsp.buf.rename()<cr>",            desc = "Rename",                mode = "n" },
+    { "<space>lc", "<cmd>Vscode<cr>",                              desc = "vscode",                mode = "n" },
+})
+
+wk.add({
+    { "<space>h",  group = "Help" },
+    { "<space>hc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme", mode = "n" },
+    { "<space>hh", "<cmd>Telescope help_tags<cr>",   desc = "Find Help",   mode = "n" },
+    { "<space>hM", "<cmd>Telescope man_pages<cr>",   desc = "Man Pages",   mode = "n" },
+    { "<space>hR", "<cmd>Telescope registers<cr>",   desc = "Registers",   mode = "n" },
+    { "<space>hk", "<cmd>Telescope keymaps<cr>",     desc = "Keymaps",     mode = "n" },
+    { "<space>hC", "<cmd>Telescope commands<cr>",    desc = "Commands",    mode = "n" },
+})
