@@ -114,30 +114,13 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'gopls', 'lemminx', "bashls",
-                "lua_ls" }
+            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'gopls', 'lemminx', "bashls", "lua_ls" }
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })
             end
-            -- lspconfig.neocmake.setup {
-            --     {
-            --         cmd = vim.lsp.rpc.connect('127.0.0.1', '9257'),
-            --         filetypes = { "cmake" },
-            --         root_dir = function(fname)
-            --             return nvim_lsp.util.find_git_ancestor(fname)
-            --         end,
-            --         single_file_support = true, -- suggested
-            --         on_attach = on_attach,      -- on_attach is the on_attach function you defined
-            --         init_options = {
-            --             format = {
-            --                 enable = false
-            --             }
-            --         }
-            --     }
-            -- }
             lspconfig.lemminx.setup {
                 cmd = { "lemminx" },
                 single_file_support = true,
@@ -198,9 +181,9 @@ return {
                             -- Get the language server to recognize the `vim` global
                             globals = { "vim", "describe", "before_each", "after_each", "it" },
                         },
-                        telemetry = {
-                            enable = false,
-                        },
+                        -- telemetry = {
+                        --     enable = false,
+                        -- },
                         completion = {
                             callSnippet = "Replace",
                         },
@@ -265,6 +248,7 @@ return {
     },
     {
         "williamboman/mason.nvim",
+        tag = "v2.0.0",
         event = "VeryLazy",
         config = function()
             require("mason").setup()
@@ -272,10 +256,8 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        tag = "v2.0.0",
         event = "BufReadPost",
-        opts = {
-            ensure_installed = { "lua_ls", "clangd", "pyright", "jsonls", "bashls" },
-        },
     },
     {
         'stevearc/conform.nvim',
