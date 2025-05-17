@@ -1,3 +1,5 @@
+local response_format = "Respond EXACTLY in this format:\n```$ftype\n<your output>\n```"
+local response_format_CN = "返回必须要满足一下的格式:\n```$ftype\n<your output>\n```"
 return {
     {
         "nomnivore/ollama.nvim",
@@ -53,6 +55,39 @@ return {
             },
             -- View the actual default prompts in ./lua/ollama/prompts.lua
             prompts = {
+                Ask_About_Code = false,
+                Explain_Code = false,
+                -- basically "no prompt"
+                Raw = {
+                    prompt = "$input",
+                    input_label = ">",
+                    action = "display",
+                },
+
+                Simplify_Code = {
+                    prompt = "Simplify the following $ftype code so that it is both easier to read and understand. "
+                        .. response_format
+                        .. "\n\n```$ftype\n$sel```",
+                    action = "replace",
+                },
+
+                Modify_Code = {
+                    prompt = "Modify this $ftype code in the following way: $input\n\n"
+                        .. response_format
+                        .. "\n\n```$ftype\n$sel```",
+                    action = "replace",
+                },
+                CodeCommentBLock = {
+                    prompt = "Generate a comment block of the $ftype method: $sel\n\n" ..
+                        response_format,
+                    action = "display",
+                    extract = "```$ftype\n(.-)```"
+                },
+
+                CodeAutoComplete = {
+                    prompt = "将一下的 $ftype 代码补全: $sel\n\n" .. response_format_CN,
+                    action = "display",
+                },
                 TranslateEng2CN = {
                     prompt = "/no_think Translate this from English to Chinese:\nEnglish: $sel\nChinese: ",
                     action = "display",
