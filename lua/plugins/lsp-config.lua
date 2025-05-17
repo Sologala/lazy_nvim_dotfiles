@@ -114,7 +114,7 @@ return {
             local lspconfig = require("lspconfig")
 
             -- Generic Settings
-            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'tsserver', 'gopls', 'lemminx', "bashls",
+            local generic_servers = { "clangd", 'pyright', 'jsonls', 'cmake', 'gopls', 'lemminx', "bashls",
                 "lua_ls" }
             for _, server in ipairs(generic_servers) do
                 lspconfig[server].setup({
@@ -157,16 +157,6 @@ return {
                 cmd = { "gopls" },
                 filetypes = { "go", "gomod", "gowork", "gotmpl" },
                 root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
-                single_file_support = true,
-            }
-            lspconfig.tsserver.setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-                cmd = { "typescript-language-server", "--stdio" },
-                init_options = {
-                    hostInfo = "neovim"
-                },
-                root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git"),
                 single_file_support = true,
             }
             lspconfig.cmake.setup {
