@@ -3,8 +3,7 @@ local response_format_CN = "返回必须要满足一下的格式:\n```$ftype\n<y
 return {
     {
         "nomnivore/ollama.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
+        dependencies = { "nvim-lua/plenary.nvim",
         },
 
         -- All the user commands added by the plugin
@@ -125,5 +124,29 @@ return {
                 }
             }
         }
-    }
+    },
+    {
+        "olimorris/codecompanion.nvim",
+        opts = {},
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("codecompanion").setup({
+                opts = {
+                --     language = "Chinese",
+                    log_level = "DEBUG", -- or "TRACE"
+                },
+                strategies = {
+                    chat = {
+                        adapter = "ollama",
+                    },
+                    inline = {
+                        adapter = "ollama",
+                    },
+                },
+            })
+        end
+    },
 }
