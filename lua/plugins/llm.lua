@@ -43,8 +43,8 @@ return {
         opts = {
             -- model = "omercelik/gemmax2-9b",
             -- model = "zongwei/gemma3-translator:4b",
-            -- model = "qwen3:1.7b",
-            model = "qwen3:0.6b",
+            model = "qwen3:1.7b",
+            -- model = "qwen3:0.6b",
             url = "http://127.0.0.1:11434",
             serve = {
                 on_start = false,
