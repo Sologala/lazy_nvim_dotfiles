@@ -11,12 +11,12 @@ return {
 
         keys = {
             -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
-            {
-                "<leader>oo",
-                ":<c-u>lua require('ollama').prompt()<cr>",
-                desc = "ollama prompt",
-                mode = { "n", "v" },
-            },
+            -- {
+            --     "<leader>oo",
+            --     ":<c-u>lua require('ollama').prompt()<cr>",
+            --     desc = "ollama prompt",
+            --     mode = { "n", "v" },
+            -- },
             -- Sample keybind for direct prompting. Note that the <c-u> is important for selections to work properly.
             {
                 "me",
@@ -128,6 +128,14 @@ return {
     {
         "olimorris/codecompanion.nvim",
         opts = {},
+        keys = {
+            {
+                "<leader>oo",
+                "<cmd>CodeCompanionChat Toggle<cr>",
+                desc = "CodeCompanionChat",
+                mode = { "n", "v" },
+            },
+        },
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -135,7 +143,7 @@ return {
         config = function()
             require("codecompanion").setup({
                 opts = {
-                --     language = "Chinese",
+                    language = "Chinese",
                     log_level = "DEBUG", -- or "TRACE"
                 },
                 strategies = {
