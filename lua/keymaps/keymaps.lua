@@ -210,8 +210,8 @@ vim.api.nvim_create_user_command('GitDiffToBuffer', git_diff_to_buffer, {})
 
 local wk = require("which-key")
 wk.add({
-    { "<space>e",  "<cmd>NvimTreeToggle<cr>",     desc = "File",                mode = "n" },
-    { "<space>E",  "<cmd>NvimTreeFindFile<cr>",   desc = "GetCurrFile",         mode = "n" },
+    { "<leader>e",  "<cmd>NvimTreeToggle<cr>",     desc = "File",                mode = "n" },
+    { "<leader>E",  "<cmd>NvimTreeFindFile<cr>",   desc = "GetCurrFile",         mode = "n" },
     { "<space>r",  "<cmd>Telescope oldfiles<cr>", desc = "HistoryFiles",        mode = "n" },
     { "<space>C",  "<cmd>%bd|e#<CR>",             desc = "Close Other Buffers", mode = "n" },
     { "<space>o",  "<cmd>AerialToggle!<CR>",      desc = "Outlines",            mode = "n" },
